@@ -39,339 +39,199 @@
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
   <style>
+    /* Plain, Jekyll/Minima-style: white, text-forward, system fonts, no decoration. */
     :root {
-      --bg: #0b1220;
-      --bg-soft: #101a2e;
-      --panel: #14203a;
-      --border: #22335a;
-      --text: #e6edf7;
-      --muted: #93a5c4;
-      --accent: #38bdf8;
-      --accent-strong: #0ea5e9;
-      --green: #34d399;
-      --amber: #fbbf24;
-      --red: #f87171;
-      --radius: 14px;
+      --text: #333;
+      --heading: #111;
+      --muted: #828282;
+      --link: #2a7ae2;
+      --border: #e8e8e8;
+      --code-bg: #f8f8f8;
+      --code-border: #e5e5e5;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      background: var(--bg);
+      background: #fff;
       color: var(--text);
-      font-family: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
     }
-    a { color: var(--accent); text-decoration: none; }
+    a { color: var(--link); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    code, pre, .mono { font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace; }
-    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    h1, h2, h3 { color: var(--heading); line-height: 1.3; }
+    h1 { font-size: 1.9rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.4rem; margin: 2.5rem 0 1rem; padding-top: 0.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
+    h3 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+    p { margin-bottom: 1rem; }
+    ul { margin: 0 0 1rem 1.6rem; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.88em;
+      background: var(--code-bg);
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+    }
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--code-border);
+      border-radius: 4px;
+      padding: 0.9rem 1rem;
+      overflow-x: auto;
+      margin: 0 0 1.2rem;
+      line-height: 1.55;
+    }
+    pre code { background: none; padding: 0; font-size: 0.85rem; }
 
-    /* ── Header ── */
-    header.site {
+    .container { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header — simple bar, like a Jekyll site header */
+    header {
       border-bottom: 1px solid var(--border);
-      background: rgba(11, 18, 32, 0.85);
-      backdrop-filter: blur(8px);
-      position: sticky; top: 0; z-index: 10;
+      padding: 16px 0;
     }
-    .nav { display: flex; align-items: center; gap: 20px; padding: 14px 0; }
-    .brand { font-weight: 800; font-size: 1.05rem; color: var(--text); display: flex; align-items: center; gap: 8px; }
-    .brand span.logo { color: var(--accent); }
-    .nav-links { margin-left: auto; display: flex; gap: 18px; align-items: center; font-size: 0.92rem; }
-    .btn {
-      display: inline-block; padding: 7px 16px; border-radius: 999px;
-      font-weight: 600; font-size: 0.88rem; transition: 0.15s;
+    .site-header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; }
+    .site-title { font-size: 1.15rem; font-weight: 700; color: var(--heading); }
+    .site-title:hover { text-decoration: none; }
+    nav a { margin-left: 14px; font-size: 0.9rem; color: var(--muted); }
+    nav a:hover { color: var(--link); }
+
+    /* Hero — plain, no badge, no buttons */
+    .hero { padding: 3rem 0 1.5rem; }
+    .hero .sub { color: var(--muted); font-size: 1.05rem; }
+
+    main { padding-bottom: 2rem; }
+
+    /* Features — two-column plain list, no cards */
+    .features { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
+    @media (max-width: 640px) { .features { grid-template-columns: 1fr; } }
+
+    /* FAQ — plain Q&A, no boxes */
+    .faq h3 { margin-top: 1.6rem; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0 40px;
+      color: var(--muted);
+      font-size: 0.85rem;
     }
-    .btn-primary { background: var(--accent-strong); color: #04121f; }
-    .btn-primary:hover { background: var(--accent); text-decoration: none; }
-    .btn-ghost { border: 1px solid var(--border); color: var(--text); }
-    .btn-ghost:hover { border-color: var(--accent); text-decoration: none; }
-
-    /* ── Hero ── */
-    .hero { padding: 84px 0 64px; text-align: center; }
-    .hero .badge {
-      display: inline-block; padding: 5px 14px; border-radius: 999px;
-      background: rgba(56, 189, 248, 0.12); color: var(--accent);
-      font-size: 0.8rem; font-weight: 600; margin-bottom: 22px; border: 1px solid rgba(56,189,248,0.3);
-    }
-    .hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
-    .hero h1 .accent { color: var(--accent); }
-    .hero .tagline { max-width: 720px; margin: 18px auto 0; color: var(--muted); font-size: clamp(1rem, 2.5vw, 1.15rem); }
-    .hero .install { margin: 32px auto 0; max-width: 640px; text-align: left; }
-    .hero .links { margin-top: 26px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-
-    /* ── Code blocks ── */
-    .codeblock { position: relative; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); }
-    .codeblock pre { padding: 16px 18px; overflow-x: auto; font-size: 0.86rem; color: var(--text); }
-    .codeblock pre .c { color: var(--muted); }
-    .codeblock pre .ok { color: var(--green); }
-    .codeblock pre .arg { color: var(--amber); }
-    .codeblock .copy {
-      position: absolute; top: 10px; right: 10px;
-      background: var(--panel); border: 1px solid var(--border); color: var(--muted);
-      border-radius: 8px; padding: 3px 10px; font-size: 0.72rem; cursor: pointer; font-family: inherit;
-    }
-    .codeblock .copy:hover { color: var(--text); border-color: var(--accent); }
-
-    /* ── Sections ── */
-    section { padding: 56px 0; }
-    section.alt { background: var(--bg-soft); }
-    h2.section-title { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; margin-bottom: 8px; }
-    .section-sub { color: var(--muted); margin-bottom: 32px; max-width: 680px; }
-    .center { text-align: center; }
-    .center .section-sub { margin-left: auto; margin-right: auto; }
-
-    /* ── Features grid ── */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
-    .card {
-      background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 22px 22px 20px; transition: 0.15s;
-    }
-    .card:hover { border-color: var(--accent-strong); transform: translateY(-2px); }
-    .card .icon { font-size: 1.5rem; margin-bottom: 10px; }
-    .card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
-    .card p { color: var(--muted); font-size: 0.9rem; }
-    .card p b { color: var(--text); font-weight: 600; }
-
-    /* ── Terminal demo ── */
-    .demo { max-width: 760px; margin: 0 auto; }
-
-    /* ── Security banner ── */
-    .security {
-      background: linear-gradient(135deg, rgba(52,211,153,0.08), rgba(56,189,248,0.08));
-      border: 1px solid rgba(52,211,153,0.35); border-radius: var(--radius);
-      padding: 26px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;
-    }
-    .security .item { display: flex; gap: 10px; align-items: flex-start; font-size: 0.92rem; }
-    .security .item .tick { color: var(--green); font-weight: 800; }
-
-    /* ── FAQ ── */
-    details.faq {
-      background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
-      padding: 16px 20px; margin-bottom: 12px;
-    }
-    details.faq summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
-    details.faq summary::after { content: "+"; color: var(--accent); font-weight: 700; font-size: 1.2rem; }
-    details.faq[open] summary::after { content: "–"; }
-    details.faq p { color: var(--muted); font-size: 0.92rem; margin-top: 12px; }
-
-    /* ── Footer ── */
-    footer { border-top: 1px solid var(--border); padding: 34px 0; text-align: center; color: var(--muted); font-size: 0.88rem; }
     footer a { color: var(--muted); text-decoration: underline; }
-    footer a:hover { color: var(--accent); }
-
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .hero { padding: 56px 0 40px; }
-      section { padding: 40px 0; }
-    }
+    footer a:hover { color: var(--link); }
   </style>
 </head>
 <body>
 
-<header class="site">
-  <div class="wrap nav">
-    <a class="brand" href="#"><span class="logo">◉</span> mybk-planner</a>
-    <div class="nav-links">
-      <a href="#features">Tính năng</a>
-      <a href="#quickstart">Bắt đầu nhanh</a>
+<header>
+  <div class="container site-header">
+    <a class="site-title" href="/">mybk-planner</a>
+    <nav>
+      <a href="#tinh-nang">Tính năng</a>
+      <a href="#bat-dau">Bắt đầu</a>
       <a href="#faq">FAQ</a>
       <a href="https://github.com/danhnth/mybk-planner" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn btn-primary" href="https://github.com/danhnth/mybk-planner" target="_blank" rel="noopener">★ Star</a>
-    </div>
+    </nav>
   </div>
 </header>
 
-<section class="hero">
-  <div class="wrap">
-    <span class="badge">Mã nguồn mở · MIT · Chỉ đọc · 100% an toàn</span>
-    <h1>Lập kế hoạch học tập <span class="accent">myBK</span> từ terminal</h1>
-    <p class="tagline">
-      <b>mybk-planner</b> là công cụ dòng lệnh cho sinh viên Đại học Bách Khoa TP.HCM: theo dõi
-      <b>GPA</b>, xem <b>bảng điểm</b>, tiến độ <b>CTĐT</b>, <b>thời khóa biểu</b>, <b>lịch thi</b>
-      và gợi ý môn học cho học kỳ tới kèm <b>dự tính học phí</b> — tất cả chỉ với một lệnh.
+<main class="container">
+
+  <div class="hero">
+    <h1>Lập kế hoạch học tập myBK từ terminal</h1>
+    <p class="sub">
+      Công cụ dòng lệnh chỉ-đọc cho sinh viên Đại học Bách Khoa TP.HCM: theo dõi GPA, xem bảng điểm,
+      tiến độ CTĐT, thời khóa biểu, lịch thi, và gợi ý môn học cho học kỳ tới kèm dự tính học phí.
     </p>
-    <div class="install">
-      <div class="codeblock">
-        <button class="copy" data-target="hero-code">Copy</button>
-        <pre id="hero-code"><span class="c"># cài đặt</span>
-<span class="ok">$</span> pip install mybk-planner
+  </div>
 
-<span class="c"># dùng thử ngay</span>
-<span class="ok">$</span> mybk-planner plan</pre>
-      </div>
+  <h2 id="tinh-nang">Tính năng</h2>
+
+  <div class="features">
+    <div>
+      <h3>GPA &amp; bảng điểm</h3>
+      <p>GPA tích lũy thang 4 và thang 10, lịch sử từng học kỳ, phân bố điểm chữ và danh sách môn điểm D có thể cải thiện.</p>
+      <h3>Tiến độ CTĐT</h3>
+      <p>Tiến độ tín chỉ theo từng khối kiến thức so với yêu cầu chương trình, tính đúng các khối nhiều ràng buộc (BB + tự chọn + đồ án).</p>
+      <h3>Thời khóa biểu &amp; lịch thi</h3>
+      <p>Xem thời khóa biểu và lịch thi cho bất kỳ học kỳ nào, định dạng tiếng Việt, dễ đọc trên terminal.</p>
+      <h3>Lập kế hoạch học kỳ</h3>
+      <p>Engine gợi ý môn học: ưu tiên môn học lại, lấp từng khối đến đúng phần còn thiếu, nằm trong ngân sách tín chỉ của bạn.</p>
     </div>
-    <div class="links">
-      <a class="btn btn-ghost" href="#quickstart">Xem hướng dẫn nhanh</a>
-      <a class="btn btn-ghost" href="https://github.com/danhnth/mybk-planner" target="_blank" rel="noopener">Mã nguồn trên GitHub →</a>
+    <div>
+      <h3>Dự tính học phí</h3>
+      <p>Ước tính học phí theo thông báo chính thức: trọn gói theo chương trình, tín chỉ vượt định mức và các mức giảm học phí.</p>
+      <h3>Xem đợt đăng ký &amp; lớp mở</h3>
+      <p>Xem đợt đăng ký hiện tại, lớp mở, phiếu đăng ký và đợt hoãn thi — chỉ đọc, không bao giờ tự đăng ký.</p>
+      <h3>REPL tương tác</h3>
+      <p>Một lần đăng nhập CAS, sau đó dùng menu 1–8 để xem mọi thứ, kèm lệnh <code>find</code> tìm môn trong CTĐT.</p>
+      <h3>JSON output</h3>
+      <p>Thêm <code>--json</code> vào bất kỳ lệnh nào để lấy dữ liệu thô cho script: <code>mybk-planner plan --json</code>.</p>
     </div>
   </div>
-</section>
 
-<section id="features" class="alt">
-  <div class="wrap">
-    <h2 class="section-title center">Tính năng nổi bật</h2>
-    <p class="section-sub center">Mọi thứ bạn cần cho việc học tại Bách Khoa, gói gọn trong một công cụ dòng lệnh chỉ-đọc.</p>
-    <div class="grid">
+  <h2 id="bat-dau">Cài đặt &amp; bắt đầu</h2>
 
-      <div class="card">
-        <div class="icon">📈</div>
-        <h3>GPA & bảng điểm</h3>
-        <p>GPA tích lũy thang 4 và thang 10, lịch sử từng học kỳ, phân bố điểm chữ và danh sách môn <b>điểm D có thể cải thiện</b>.</p>
-      </div>
+  <p>Yêu cầu Python 3.10 trở lên. Tạo file <code>.env</code> từ mẫu <code>.env.example</code> và điền thông tin đăng nhập myBK của bạn.</p>
 
-      <div class="card">
-        <div class="icon">🗺️</div>
-        <h3>Tiến độ CTĐT</h3>
-        <p>Tiến độ tín chỉ theo từng <b>khối kiến thức</b> so với yêu cầu chương trình, tính đúng các khối nhiều ràng buộc (BB + tự chọn + đồ án).</p>
-      </div>
+  <pre><code># .env — file này được git-ignore, không bao giờ bị commit
+MYBK_USERNAME=your.bknetid
+MYBK_PASSWORD=your-password
+MYBK_MSSV=2212345</code></pre>
 
-      <div class="card">
-        <div class="icon">📅</div>
-        <h3>Thời khóa biểu & lịch thi</h3>
-        <p>Xem thời khóa biểu và lịch thi cho bất kỳ học kỳ nào, định dạng tiếng Việt, dễ đọc trên terminal.</p>
-      </div>
+  <pre><code>$ pip install mybk-planner
 
-      <div class="card">
-        <div class="icon">🎯</div>
-        <h3>Lập kế hoạch học kỳ (plan)</h3>
-        <p>Engine gợi ý môn học: ưu tiên môn <b>học lại</b>, lấp từng khối đến đúng phần còn thiếu, nằm trong <b>ngân sách tín chỉ</b> của bạn.</p>
-      </div>
+$ mybk-planner info      # hồ sơ sinh viên
+$ mybk-planner gpa       # GPA tích lũy (thang 10 + thang 4)
+$ mybk-planner ctdt      # tiến độ chương trình đào tạo theo khối
+$ mybk-planner plan      # kế hoạch gợi ý học kỳ tới + dự tính học phí</code></pre>
 
-      <div class="card">
-        <div class="icon">💰</div>
-        <h3>Dự tính học phí</h3>
-        <p>Ước tính học phí theo thông báo chính thức: <b>trọn gói</b> theo chương trình, tín chỉ <b>vượt định mức</b> và các mức <b>giảm học phí</b>.</p>
-      </div>
+  <h2>Bảo mật</h2>
 
-      <div class="card">
-        <div class="icon">🧾</div>
-        <h3>Xem đợt đăng ký & lớp mở</h3>
-        <p>Xem đợt đăng ký hiện tại, lớp mở, phiếu đăng ký và đợt hoãn thi — <b>chỉ đọc</b>, không bao giờ tự đăng ký.</p>
-      </div>
+  <ul>
+    <li><strong>Chỉ đọc.</strong> Không bao giờ tự đăng ký môn hay ghi đè bất kỳ dữ liệu nào.</li>
+    <li><strong>Tài khoản của chính bạn.</strong> Chỉ truyền MSSV của bạn, không dùng cho tài khoản khác.</li>
+    <li><strong>Không bao giờ commit thông tin đăng nhập.</strong> <code>.env</code>, token và cookie đều bị git-ignore.</li>
+    <li><strong>Cộng đồng, không chính thức.</strong> Công cụ độc lập, không liên kết với HCMUT.</li>
+  </ul>
 
-      <div class="card">
-        <div class="icon">🔧</div>
-        <h3>REPL tương tác</h3>
-        <p>Một lần đăng nhập CAS, sau đó dùng menu <code>1–8</code> để xem mọi thứ, kèm lệnh <code>find</code> tìm môn trong CTĐT.</p>
-      </div>
+  <h2 id="faq">Câu hỏi thường gặp</h2>
 
-      <div class="card">
-        <div class="icon">📤</div>
-        <h3>JSON output</h3>
-        <p>Thêm <code>--json</code> vào bất kỳ lệnh nào để lấy dữ liệu thô cho script: <code>mybk-planner plan --json | jq '.plan.completion'</code>.</p>
-      </div>
+  <div class="faq">
+    <h3>Đây có phải công cụ chính thức của trường không?</h3>
+    <p>Không. mybk-planner là công cụ mã nguồn mở cộng đồng, không chính thức, được phát triển độc lập. Trường không bảo trì hay xác nhận công cụ này.</p>
 
-    </div>
+    <h3>Tài khoản của tôi có an toàn không?</h3>
+    <p>Có, với điều kiện bạn dùng cho chính mình. Công cụ chỉ đọc dữ liệu bằng thông tin đăng nhập của bạn, không sửa đổi gì. Lưu ý giới hạn tốc độ (rate limit) của myBK — nếu bị 403, hãy chờ một lúc, đừng spam.</p>
+
+    <h3>Tôi vẫn đăng ký môn học trên myBK chứ?</h3>
+    <p>Đúng. mybk-planner chỉ tìm lớp mở và gợi ý kế hoạch học tập. Việc đăng ký luôn thực hiện qua cổng myBK chính thức của trường.</p>
+
+    <h3>Vì sao tổng tín chỉ khác với cộng dồn thô trong CTĐT?</h3>
+    <p>Vì khoảng trống của một khối là tổng các dòng yêu cầu phân biệt, và feed lặp lại yêu cầu trên mọi dòng môn học. Cộng dồn thô toàn bộ môn tự chọn sẽ bị đếm thừa — mybk-planner xử lý đúng điều này.</p>
+
+    <h3>mybk-planner chạy được trên hệ điều hành nào?</h3>
+    <p>Chạy được trên Windows, macOS và Linux — yêu cầu duy nhất là Python 3.10 trở lên.</p>
+
+    <h3>Làm sao để đóng góp cho dự án?</h3>
+    <p>Clone repo, cài <code>pip install -e ".[dev]"</code>, chạy <code>python -m pytest tests -q</code> và <code>ruff check mybk_planner tests</code> rồi mở Pull Request trên GitHub.</p>
   </div>
-</section>
 
-<section id="quickstart">
-  <div class="wrap">
-    <h2 class="section-title center">Cài đặt & bắt đầu nhanh</h2>
-    <p class="section-sub center">Yêu cầu Python 3.10+. Tạo file <code>.env</code> từ mẫu <code>.env.example</code> và điền thông tin đăng nhập myBK của bạn.</p>
-
-    <div class="codeblock" style="margin-bottom:18px">
-      <button class="copy" data-target="cfg-code">Copy</button>
-      <pre id="cfg-code"><span class="c"># .env — thông tin đăng nhập (file này được git-ignore, không bao giờ bị commit)</span>
-MYBK_USERNAME=<span class="arg">your.bknetid</span>
-MYBK_PASSWORD=<span class="arg">your-password</span>
-MYBK_MSSV=<span class="arg">2212345</span>   <span class="c"># tùy chọn — tự lấy từ hồ sơ nếu bỏ trống</span></pre>
-    </div>
-
-    <div class="codeblock demo">
-      <button class="copy" data-target="demo-code">Copy</button>
-      <pre id="demo-code"><span class="c"># hồ sơ sinh viên</span>
-<span class="ok">$</span> mybk-planner info
-
-<span class="c"># GPA tích lũy (thang 10 + thang 4)</span>
-<span class="ok">$</span> mybk-planner gpa
-
-<span class="c"># tiến độ chương trình đào tạo theo khối</span>
-<span class="ok">$</span> mybk-planner ctdt
-
-<span class="c"># kế hoạch gợi ý học kỳ tới + dự tính học phí</span>
-<span class="ok">$</span> mybk-planner plan --max-tc 18 --semester 20253</pre>
-    </div>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="wrap">
-    <h2 class="section-title center">Cam kết bảo mật</h2>
-    <p class="section-sub center">Công cụ được thiết kế theo nguyên tắc an toàn cho chính tài khoản của bạn.</p>
-    <div class="security">
-      <div class="item"><span class="tick">✓</span> <span><b>Chỉ đọc (read-only).</b> Không bao giờ tự đăng ký môn hay ghi đè bất kỳ dữ liệu nào.</span></div>
-      <div class="item"><span class="tick">✓</span> <span><b>Tài khoản của chính bạn.</b> Chỉ truyền MSSV của bạn, không dùng cho tài khoản khác.</span></div>
-      <div class="item"><span class="tick">✓</span> <span><b>Không bao giờ commit thông tin đăng nhập.</b> <code>.env</code>, token và cookie đều bị git-ignore.</span></div>
-      <div class="item"><span class="tick">✓</span> <span><b>Cộng đồng, không chính thức.</b> Công cụ độc lập, không liên kết với HCMUT.</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap">
-    <h2 class="section-title center">Câu hỏi thường gặp</h2>
-    <p class="section-sub center">Những thắc mắc phổ biến của sinh viên Bách Khoa khi dùng mybk-planner.</p>
-
-    <details class="faq">
-      <summary>Đây có phải công cụ chính thức của trường không?</summary>
-      <p>Không. mybk-planner là công cụ mã nguồn mở cộng đồng, không chính thức, được phát triển độc lập. Trường không bảo trì hay xác nhận công cụ này.</p>
-    </details>
-
-    <details class="faq">
-      <summary>Tài khoản của tôi có an toàn không?</summary>
-      <p>Có, với điều kiện bạn dùng cho chính mình. Công cụ chỉ đọc dữ liệu bằng thông tin đăng nhập của bạn, không sửa đổi gì. Lưu ý giới hạn tốc độ (rate limit) của myBK — nếu bị 403, hãy chờ một lúc, đừng spam.</p>
-    </details>
-
-    <details class="faq">
-      <summary>Tôi vẫn đăng ký môn học trên myBK chứ?</summary>
-      <p>Đúng. mybk-planner chỉ <b>tìm</b> lớp mở và <b>gợi ý</b> kế hoạch học tập. Việc đăng ký luôn thực hiện qua cổng myBK chính thức của trường.</p>
-    </details>
-
-    <details class="faq">
-      <summary>Vì sao tổng tín chỉ khác với cộng dồn thô trong CTĐT?</summary>
-      <p>Vì khoảng trống của một khối là tổng các dòng yêu cầu <b>phân biệt</b>, và feed lặp lại yêu cầu trên mọi dòng môn học. Cộng dồn thô toàn bộ môn tự chọn sẽ bị đếm thừa — mybk-planner xử lý đúng điều này.</p>
-    </details>
-
-    <details class="faq">
-      <summary>mybk-planner chạy được trên hệ điều hành nào?</summary>
-      <p>Chạy được trên Windows, macOS và Linux — yêu cầu duy nhất là Python 3.10 trở lên. Cài bằng <code>pip install mybk-planner</code> là dùng được ngay.</p>
-    </details>
-
-    <details class="faq">
-      <summary>Làm sao để đóng góp cho dự án?</summary>
-      <p>Clone repo, cài <code>pip install -e ".[dev]"</code>, chạy <code>python -m pytest tests -q</code> và <code>ruff check mybk_planner tests</code> rồi mở Pull Request trên GitHub. Mọi đóng góp đều được hoan nghênh.</p>
-    </details>
-  </div>
-</section>
+</main>
 
 <footer>
-  <div class="wrap">
-    <p>mybk-planner · Mã nguồn mở · <a href="https://github.com/danhnth/mybk-planner" target="_blank" rel="noopener">GitHub</a> · <a href="https://github.com/danhnth/mybk-planner/blob/main/README.md" target="_blank" rel="noopener">README</a> · <a href="https://github.com/danhnth/mybk-planner/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a> © 2026 Nguyễn Thành Danh</p>
-    <p style="margin-top:6px; font-size:0.8rem">Công cụ cộng đồng, không liên kết với Đại học Bách Khoa TP.HCM (HCMUT).</p>
+  <div class="container">
+    <p>
+      mybk-planner ·
+      <a href="https://github.com/danhnth/mybk-planner" target="_blank" rel="noopener">GitHub</a> ·
+      <a href="https://github.com/danhnth/mybk-planner/blob/main/README.md" target="_blank" rel="noopener">README</a> ·
+      <a href="https://github.com/danhnth/mybk-planner/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+      © 2026 Nguyễn Thành Danh
+    </p>
+    <p>Công cụ cộng đồng, không liên kết với Đại học Bách Khoa TP.HCM (HCMUT).</p>
   </div>
 </footer>
-
-<script>
-  document.querySelectorAll(".copy").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      try {
-        var target = document.getElementById(btn.getAttribute("data-target"));
-        var text = target.innerText;
-        navigator.clipboard.writeText(text).then(function () {
-          btn.textContent = "✓ Copied";
-          setTimeout(function () { btn.textContent = "Copy"; }, 1500);
-        });
-      } catch (e) { /* clipboard unavailable — ignore */ }
-    });
-  });
-</script>
 
 </body>
 </html>
