@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [
-    { name = "Nguyễn Thành Danh", email = "danhnth@gmail.com" },
+    { name = "Nguyễn Thành Danh", email = "tdanh2005@gmail.com" },
 ]
 keywords = [
     "hcmut", "mybk", "vietnam", "student", "planner", "course-planner",
