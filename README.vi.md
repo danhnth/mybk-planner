@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![CI](https://github.com/danhnth/mybk-planner/actions/workflows/ci.yml/badge.svg)](https://github.com/danhnth/mybk-planner/actions)
 [![Downloads](https://img.shields.io/pypi/dm/mybk-planner)](https://pypi.org/project/mybk-planner/)
-[![DeepWiki](https://deepwiki.com/badge/github/danhnth/mybk-planner.svg)](https://deepwiki.com/danhnth/mybk-planner)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/danhnth/mybk-planner)
 
 **mybk-planner** là công cụ dòng lệnh chỉ đọc dành cho sinh viên Đại học Bách Khoa TP.HCM, giúp lập kế hoạch học tập ngay trên cổng myBK: theo dõi GPA, xem bảng điểm, tiến độ chương trình đào tạo (CTĐT), thời khóa biểu, lịch thi, cùng gợi ý môn học cho học kỳ tới kèm dự tính học phí. Tất cả ngay trên terminal.
 
