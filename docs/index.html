@@ -175,7 +175,7 @@
 
   <p>Yêu cầu Python 3.10 trở lên. Tạo file <code>.env</code> từ mẫu <code>.env.example</code> và điền thông tin đăng nhập myBK của bạn.</p>
 
-  <pre><code># .env — file này được git-ignore, không bao giờ bị commit
+  <pre><code># .env: file này được git-ignore, không bao giờ bị commit
 MYBK_USERNAME=your.bknetid
 MYBK_PASSWORD=your-password
 MYBK_MSSV=2212345</code></pre>
@@ -209,7 +209,7 @@ $ mybk-planner plan      # kế hoạch gợi ý học kỳ tới + dự tính h
     <p>Đúng. mybk-planner chỉ tìm lớp mở và gợi ý kế hoạch học tập. Việc đăng ký luôn thực hiện qua cổng myBK chính thức của trường.</p>
 
     <h3>Vì sao tổng tín chỉ khác với cộng dồn thô trong CTĐT?</h3>
-    <p>Vì khoảng trống của một khối là tổng các dòng yêu cầu phân biệt, và feed lặp lại yêu cầu trên mọi dòng môn học. Cộng dồn thô toàn bộ môn tự chọn sẽ bị đếm thừa. mybk-planner xử lý đúng điều này.</p>
+    <p>Vì khoảng trống của một khối là tổng các dòng yêu cầu phân biệt, và nguồn dữ liệu lặp lại yêu cầu trên mọi dòng môn học. Cộng dồn thô toàn bộ môn tự chọn sẽ bị đếm thừa. mybk-planner xử lý đúng điều này.</p>
 
     <h3>mybk-planner chạy được trên hệ điều hành nào?</h3>
     <p>Chạy được trên Windows, macOS và Linux: yêu cầu duy nhất là Python 3.10 trở lên.</p>
