@@ -45,7 +45,7 @@ Các công cụ cộng đồng HCMUT hiện có (`mybk-mobile`, `BKSchedule`, `B
 - **Đã kiểm chứng trực tiếp trên API `/app` hiện tại của myBK (2026)** — gồm cả quirk `?null` chống cache, BOM UTF-8, và envelope `{code,msg,data}`.
 - **Chỉ đọc và an toàn** — không bao giờ có wrapper `tao-phieu-dang-ky` / `huy-phieu-dang-ky`. Quy trình đăng ký của bạn không bị ảnh hưởng.
 - **Vừa CLI vừa thư viện** — bảng đẹp trên terminal, JSON thô với `--json`, và các hàm thuần túy (`analysis`, `fees`) để tự viết script.
-- **Tôn trọng quyền riêng tư** — thông tin đăng nhập nằm trong file `.env` được git-ignore, không bao giờ bị commit; công cụ được thiết kế **chỉ dùng cho tài khoản của chính bạn**.
+- **Tôn trọng quyền riêng tư** — thông tin đăng nhập nằm trong file `.env` được git-ignore, không bao giờ bị commit; công cụ **chỉ dùng cho tài khoản của chính bạn**.
 
 ## Cài đặt như thế nào?
 
@@ -126,11 +126,11 @@ Lệnh `plan` đọc CTĐT và bảng điểm của bạn, sau đó:
 3. Phần ngân sách dư đổ vào môn của các khối đã đạt theo độ ưu tiên.
 4. In bảng phân tích đầy đủ: diễn biến GPA, % hoàn thành, các khối còn thiếu, sức khỏe điểm số, thời gian tốt nghiệp dự kiến, và **dự tính học phí**.
 
-Các điểm quan trọng được xử lý đúng:
+Những điểm công cụ xử lý đúng:
 
-- **Thẩm quyền xác định "đạt" là bảng điểm, không phải `diemdat` của CTĐT** — học lại đạt (ví dụ F rồi D+) được loại khỏi danh sách "chưa đạt".
-- **Khoảng trống của khối = tổng các dòng yêu cầu RIÊNG BIỆT** — feed lặp lại yêu cầu của mỗi nhóm trên mọi dòng môn học, và một khối có thể mang nhiều nhóm cộng dồn (ví dụ Chuyên ngành = khối BB + tổ hợp tự chọn + đồ án). Cách đọc "dòng đầu tiên" sẽ tính thiếu chương trình.
-- **Thời gian còn lại** dùng chênh lệch tín chỉ giữa các học kỳ, `ceil(còn lại / max_tc)` học kỳ theo ngân sách của bạn.
+- **Căn cứ xác định "đạt" là bảng điểm, không phải `diemdat` của CTĐT** — học lại đạt (ví dụ F rồi D+) được loại khỏi danh sách "chưa đạt".
+- **Phần còn thiếu của khối = tổng các dòng yêu cầu RIÊNG BIỆT** — feed lặp lại yêu cầu của mỗi nhóm trên mọi dòng môn học, và một khối có thể mang nhiều nhóm cộng dồn (ví dụ Chuyên ngành = khối BB + tổ hợp tự chọn + đồ án). Cách đọc "dòng đầu tiên" sẽ tính thiếu chương trình.
+- **Thời gian còn lại** dùng chênh lệch tín chỉ giữa các học kỳ: số học kỳ cần thêm là `ceil(còn lại / max_tc)` theo ngân sách của bạn.
 - **Học phí** (theo thông báo 2026-2027): phí **trọn gói** theo chương trình, tín chỉ trên định mức **18 TC/HK** tính theo đơn giá, và các mức giảm ≤12/≤9/≤6 TC (15/30/45%) hiển thị khi kế hoạch của bạn đủ điều kiện.
 
 ## REPL tương tác
@@ -186,15 +186,15 @@ Không — đây là client chỉ-đọc cộng đồng, không chính thức, c
 
 ### Tài khoản của tôi có an toàn không?
 
-Công cụ chỉ đọc dữ liệu bằng chính thông tin đăng nhập của bạn và không sửa đổi gì; công cụ chỉ dùng cho tài khoản của chính bạn. Hãy chú ý giới hạn tốc độ của myBK.
+Công cụ chỉ đọc dữ liệu bằng chính thông tin đăng nhập của bạn, không sửa đổi gì và chỉ dùng cho tài khoản của chính bạn. Hãy chú ý giới hạn tốc độ của myBK.
 
 ### Tôi có thể dùng để xem dữ liệu của người khác không?
 
-Không. Chỉ truyền MSSV của chính bạn. Các endpoint này không dành cho mục đích xem tài khoản chéo.
+Không. Chỉ truyền MSSV của chính bạn. Các endpoint này không dùng để xem dữ liệu của tài khoản khác.
 
 ### Vì sao tổng tín chỉ của tôi khác với cộng dồn thô trong CTĐT?
 
-Vì phần còn thiếu của một khối là tổng các dòng yêu cầu *riêng biệt*, và feed lặp lại giá trị yêu cầu trên mọi dòng môn học. Cộng dồn thô mọi môn tự chọn sẽ bị đếm thừa.
+Vì phần còn thiếu của một khối là tổng các dòng yêu cầu *riêng biệt*, và feed lặp lại giá trị yêu cầu trên mọi dòng môn học. Cộng dồn thô mọi môn tự chọn sẽ đếm thừa.
 
 ### Tôi vẫn đăng ký môn trên myBK chứ?
 
