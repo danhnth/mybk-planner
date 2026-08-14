@@ -5,6 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![CI](https://github.com/danhnth/mybk-planner/actions/workflows/ci.yml/badge.svg)](https://github.com/danhnth/mybk-planner/actions)
 [![Downloads](https://img.shields.io/pypi/dm/mybk-planner)](https://pypi.org/project/mybk-planner/)
+[![DeepWiki](https://deepwiki.com/badge/github/danhnth/mybk-planner.svg)](https://deepwiki.com/danhnth/mybk-planner)
 
 **mybk-planner** is a read-only command-line tool for HCMUT (Đại học Bách Khoa TP.HCM) students. It turns the myBK portal into a course planner: GPA tracker, transcript reader, CTĐT curriculum progress, timetable, exam schedule, and a next-semester course recommendation engine with tuition estimates. All from your terminal, in Vietnamese and English output.
 
