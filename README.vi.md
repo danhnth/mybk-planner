@@ -6,9 +6,9 @@
 [![CI](https://github.com/danhnth/mybk-planner/actions/workflows/ci.yml/badge.svg)](https://github.com/danhnth/mybk-planner/actions)
 [![Downloads](https://img.shields.io/pypi/dm/mybk-planner)](https://pypi.org/project/mybk-planner/)
 
-**mybk-planner** là công cụ dòng lệnh **chỉ đọc** dành cho sinh viên Đại học Bách Khoa TP.HCM, biến cổng myBK thành một **công cụ lập kế hoạch học tập**: theo dõi GPA, xem bảng điểm, tiến độ chương trình đào tạo (CTĐT), thời khóa biểu, lịch thi, và một engine gợi ý môn học cho học kỳ tới kèm **dự tính học phí** — ngay trên terminal.
+**mybk-planner** là công cụ dòng lệnh **chỉ đọc** dành cho sinh viên Đại học Bách Khoa TP.HCM, giúp lập kế hoạch học tập ngay trên cổng myBK: theo dõi GPA, xem bảng điểm, tiến độ chương trình đào tạo (CTĐT), thời khóa biểu, lịch thi, cùng gợi ý môn học cho học kỳ tới kèm **dự tính học phí** — tất cả ngay trên terminal.
 
-Chỉ đọc theo thiết kế: công cụ **tìm** lớp và **gợi ý** kế hoạch; việc đăng ký vẫn diễn ra trên cổng chính thức.
+Công cụ chỉ đọc: **tìm** lớp và **gợi ý** kế hoạch, còn việc đăng ký vẫn diễn ra trên cổng chính thức.
 
 [English → README.md](README.md)
 
@@ -31,19 +31,19 @@ Chỉ đọc theo thiết kế: công cụ **tìm** lớp và **gợi ý** kế 
 
 ## Công cụ này làm được gì?
 
-- **GPA & bảng điểm** — GPA tích lũy theo thang 10 và thang 4, lịch sử GPA từng học kỳ, phân bố điểm chữ, danh sách môn điểm D có thể cải thiện, và xử lý đúng chuyện **học lại đã đạt**: môn từng rớt F nhưng sau đó đạt (D+) không còn bị tính là "chưa đạt".
-- **Tiến độ CTĐT** — tiến độ tín chỉ theo từng khối kiến thức so với yêu cầu chương trình, với phép tính **nhiều ràng buộc** đúng (khối BB + tổ hợp tự chọn + đồ án được cộng dồn, không bị gộp nhầm).
+- **GPA & bảng điểm** — GPA tích lũy theo thang 10 và thang 4, lịch sử GPA từng học kỳ, phân bố điểm chữ, danh sách môn điểm D có thể cải thiện, và xử lý đúng trường hợp **học lại đã đạt**: môn từng rớt F nhưng sau đó đạt (D+) không còn được tính là "chưa đạt".
+- **Tiến độ CTĐT** — tiến độ tín chỉ theo từng khối kiến thức so với yêu cầu chương trình, tính đúng các khối có **nhiều ràng buộc** (khối BB + tổ hợp tự chọn + đồ án được cộng dồn, không gộp nhầm).
 - **Thời khóa biểu & lịch thi** — xem thời khóa biểu và lịch thi cho bất kỳ học kỳ nào.
-- **Trình lập kế hoạch** — lệnh `plan` kết hợp CTĐT + bảng điểm (+ danh sách lớp mở nếu có đợt) gợi ý danh sách môn cho học kỳ tới: ưu tiên môn **học lại**, lấp từng khối đến đúng **phần còn thiếu của riêng khối đó**, và nằm trong ngân sách tín chỉ mỗi học kỳ.
+- **Trình lập kế hoạch** — lệnh `plan` kết hợp CTĐT + bảng điểm (+ danh sách lớp mở nếu có đợt) để gợi ý môn học kỳ tới: ưu tiên môn **học lại**, lấp từng khối đến đúng **phần còn thiếu của riêng khối đó**, và không vượt ngân sách tín chỉ mỗi học kỳ.
 - **Dự tính học phí** — `plan` in ra học phí ước tính theo thông báo học phí 2026-2027 chính thức: học phí **trọn gói** theo chương trình của bạn, tín chỉ **vượt định mức** tính theo đơn giá khi đăng ký quá 18 TC/HK, và các mức **giảm học phí** (Bảng 1.2) khi đăng ký ít tín chỉ.
-- **Mặt đọc của đăng ký môn** — xem đợt đăng ký hiện tại, lớp mở, phiếu đăng ký của bạn, và đợt hoãn thi. Các endpoint ghi **cố tình không** được bao bọc.
+- **Phần chỉ-đọc của đăng ký môn** — xem đợt đăng ký hiện tại, lớp mở, phiếu đăng ký của bạn, và đợt hoãn thi. Các endpoint ghi **cố tình không** được bao bọc.
 
 ## Vì sao chọn mybk-planner?
 
-Các công cụ cộng đồng HCMUT hiện có (`mybk-mobile`, `BKSchedule`, `BKSCrawler`, các script xem điểm) phần lớn đã lỗi thời, bị archive, hoặc là plugin trình duyệt. mybk-planner:
+Các công cụ cộng đồng HCMUT hiện có (`mybk-mobile`, `BKSchedule`, `BKSCrawler`, các script xem điểm) phần lớn đã lỗi thời, bị archive, hoặc chỉ là plugin trình duyệt. mybk-planner:
 
-- **Được kiểm chứng live trên API `/app` hiện tại của myBK (2026)** — gồm cả quirk `?null` chống cache, BOM UTF-8, và envelope `{code,msg,data}`.
-- **Chỉ đọc và an toàn** — không bao giờ có wrapper `tao-phieu-dang-ky` / `huy-phieu-dang-ky`. Quy trình đăng ký của bạn không bị đụng tới.
+- **Đã kiểm chứng trực tiếp trên API `/app` hiện tại của myBK (2026)** — gồm cả quirk `?null` chống cache, BOM UTF-8, và envelope `{code,msg,data}`.
+- **Chỉ đọc và an toàn** — không bao giờ có wrapper `tao-phieu-dang-ky` / `huy-phieu-dang-ky`. Quy trình đăng ký của bạn không bị ảnh hưởng.
 - **Vừa CLI vừa thư viện** — bảng đẹp trên terminal, JSON thô với `--json`, và các hàm thuần túy (`analysis`, `fees`) để tự viết script.
 - **Tôn trọng quyền riêng tư** — thông tin đăng nhập nằm trong file `.env` được git-ignore, không bao giờ bị commit; công cụ được thiết kế **chỉ dùng cho tài khoản của chính bạn**.
 
@@ -80,7 +80,7 @@ cp .env.example .env
 | `MYBK_PASSWORD` | có | mật khẩu CAS (đặt trong dấu nháy nếu chứa `#` hoặc khoảng trắng) |
 | `MYBK_MSSV` | không | ghi đè mã số sinh viên; tự động lấy từ hồ sơ nếu bỏ trống |
 
-Thứ tự ưu tiên đọc thông tin: **tham số CLI → biến môi trường → file `.env`**. Các tên cũ `MYBK_TEST_USERNAME`/`MYBK_TEST_PASSWORD`/`MYBK_TEST_MSSV` vẫn được chấp nhận như phương án dự phòng.
+Thứ tự ưu tiên đọc thông tin: **tham số CLI → biến môi trường → file `.env`**. Các tên cũ `MYBK_TEST_USERNAME`/`MYBK_TEST_PASSWORD`/`MYBK_TEST_MSSV` vẫn hoạt động như phương án dự phòng.
 
 ## Bắt đầu nhanh
 
@@ -128,14 +128,14 @@ Lệnh `plan` đọc CTĐT và bảng điểm của bạn, sau đó:
 
 Các điểm quan trọng được xử lý đúng:
 
-- **Thẩm quyền "đạt" là bảng điểm, không phải `diemdat` của CTĐT** — học lại đạt (ví dụ F rồi D+) được loại khỏi danh sách "chưa đạt".
-- **Khoảng trống của khối = tổng các dòng yêu cầu PHÂN BIỆT** — feed lặp lại yêu cầu của mỗi nhóm trên mọi dòng môn học, và một khối có thể mang nhiều nhóm cộng dồn (ví dụ Chuyên ngành = khối BB + tổ hợp tự chọn + đồ án). Cách đọc "dòng đầu tiên" sẽ tính thiếu chương trình.
+- **Thẩm quyền xác định "đạt" là bảng điểm, không phải `diemdat` của CTĐT** — học lại đạt (ví dụ F rồi D+) được loại khỏi danh sách "chưa đạt".
+- **Khoảng trống của khối = tổng các dòng yêu cầu RIÊNG BIỆT** — feed lặp lại yêu cầu của mỗi nhóm trên mọi dòng môn học, và một khối có thể mang nhiều nhóm cộng dồn (ví dụ Chuyên ngành = khối BB + tổ hợp tự chọn + đồ án). Cách đọc "dòng đầu tiên" sẽ tính thiếu chương trình.
 - **Thời gian còn lại** dùng chênh lệch tín chỉ giữa các học kỳ, `ceil(còn lại / max_tc)` học kỳ theo ngân sách của bạn.
 - **Học phí** (theo thông báo 2026-2027): phí **trọn gói** theo chương trình, tín chỉ trên định mức **18 TC/HK** tính theo đơn giá, và các mức giảm ≤12/≤9/≤6 TC (15/30/45%) hiển thị khi kế hoạch của bạn đủ điều kiện.
 
 ## REPL tương tác
 
-Chạy không có lệnh con để vào chế độ menu (một lần đăng nhập CAS, sau đó `1`–`8` cùng `find`, `help`):
+Chạy không kèm lệnh con để vào chế độ menu (một lần đăng nhập CAS, sau đó `1`–`8` cùng `find`, `help`):
 
 ```
 1 info · 2 grades · 3 gpa · 4 ctdt · 5 plan · 6 schedule · 7 exams · 8 dashboard
@@ -143,7 +143,7 @@ Chạy không có lệnh con để vào chế độ menu (một lần đăng nh�
 
 ## Xuất JSON để viết script
 
-Thêm `--json` vào bất kỳ lệnh nào để lấy một document JSON duy nhất trên stdout (xác nhận đăng nhập ghi ra stderr), tiện cho việc pipe vào `jq` hoặc phân tích riêng:
+Thêm `--json` vào bất kỳ lệnh nào để lấy một JSON duy nhất trên stdout (xác nhận đăng nhập ghi ra stderr), tiện cho việc pipe vào `jq` hoặc phân tích riêng:
 
 ```bash
 mybk-planner plan --json | jq '.plan.completion'
@@ -157,7 +157,7 @@ Những điều API myBK không nói ra, ghi lại cho người đóng góp:
 - **Hậu tố `?null`** được thêm vào tham số đầu tiên của GET (quirk chống cache của `/app/js/main.js`).
 - **BOM UTF-8** (`\ufeff`) được bỏ khỏi response.
 - **Mã hóa `id_hoc_ky`**: `(YYYY % 100) * 10 + HK` — HK2 năm 25–26 ⇒ `252`.
-- **CAS**: myBK đứng sau CAS 3.5.1 (`sso.hcmut.edu.vn/cas` cho `/app`). Bị 403 khi đăng nhập thường là do **bị giới hạn tốc độ** — hãy chờ, đừng spam.
+- **CAS**: myBK dùng CAS 3.5.1 (`sso.hcmut.edu.vn/cas` cho `/app`). Gặp 403 khi đăng nhập thường là do **bị giới hạn tốc độ** — hãy chờ, đừng spam.
 
 ## Bảo mật & phạm vi
 
@@ -186,7 +186,7 @@ Không — đây là client chỉ-đọc cộng đồng, không chính thức, c
 
 ### Tài khoản của tôi có an toàn không?
 
-Công cụ chỉ đọc dữ liệu bằng chính thông tin đăng nhập của bạn, không sửa đổi gì, và được thiết kế chỉ dùng cho tài khoản của chính bạn. Hãy chú ý giới hạn tốc độ của myBK.
+Công cụ chỉ đọc dữ liệu bằng chính thông tin đăng nhập của bạn và không sửa đổi gì; công cụ chỉ dùng cho tài khoản của chính bạn. Hãy chú ý giới hạn tốc độ của myBK.
 
 ### Tôi có thể dùng để xem dữ liệu của người khác không?
 
@@ -194,7 +194,7 @@ Không. Chỉ truyền MSSV của chính bạn. Các endpoint này không dành 
 
 ### Vì sao tổng tín chỉ của tôi khác với cộng dồn thô trong CTĐT?
 
-Vì khoảng trống của một khối là tổng các dòng yêu cầu *phân biệt*, và feed lặp lại giá trị yêu cầu trên mọi dòng môn học. Cộng dồn thô mọi môn tự chọn sẽ bị đếm thừa.
+Vì phần còn thiếu của một khối là tổng các dòng yêu cầu *riêng biệt*, và feed lặp lại giá trị yêu cầu trên mọi dòng môn học. Cộng dồn thô mọi môn tự chọn sẽ bị đếm thừa.
 
 ### Tôi vẫn đăng ký môn trên myBK chứ?
 
