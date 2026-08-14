@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>mybk-planner — Lập kế hoạch học tập, GPA & thời khóa biểu cho sinh viên Bách Khoa (CLI)</title>
+  <title>mybk-planner: Lập kế hoạch học tập, GPA & thời khóa biểu cho sinh viên Bách Khoa (CLI)</title>
 
   <meta name="description" content="mybk-planner là công cụ dòng lệnh chỉ-đọc cho cổng myBK của Đại học Bách Khoa TP.HCM: xem GPA, bảng điểm, tiến độ CTĐT, thời khóa biểu, lịch thi và lập kế hoạch học kỳ tới kèm dự tính học phí.">
   <meta name="keywords" content="hcmut, mybk, course planner, gpa, timetable, exam schedule, ctdt, lập kế hoạch học tập, xem điểm bách khoa, lịch thi bách khoa, thời khóa biểu, sinh viên bách khoa, công cụ sinh viên, python cli">
@@ -14,14 +14,14 @@
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="mybk-planner">
-  <meta property="og:title" content="mybk-planner — HCMUT myBK Course Planner, GPA & Timetable CLI">
+  <meta property="og:title" content="mybk-planner: HCMUT myBK Course Planner, GPA & Timetable CLI">
   <meta property="og:description" content="Read-only CLI for the HCMUT myBK portal: GPA, transcript, CTĐT curriculum progress, timetable, exam schedule and a next-semester course planner with tuition estimates.">
   <meta property="og:url" content="https://danhnth.github.io/mybk-planner/">
   <meta property="og:locale" content="vi_VN">
   <meta property="og:locale:alternate" content="en_US">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="mybk-planner — HCMUT myBK Course Planner, GPA & Timetable CLI">
+  <meta name="twitter:title" content="mybk-planner: HCMUT myBK Course Planner, GPA & Timetable CLI">
   <meta name="twitter:description" content="Read-only CLI for the HCMUT myBK portal: GPA, transcript, CTĐT curriculum, timetable, exam schedule and a next-semester course planner with tuition estimates.">
 
   <script type="application/ld+json">
@@ -163,9 +163,9 @@
       <h3>Dự tính học phí</h3>
       <p>Ước tính học phí theo thông báo chính thức: trọn gói theo chương trình, tín chỉ vượt định mức và các mức giảm học phí.</p>
       <h3>Xem đợt đăng ký &amp; lớp mở</h3>
-      <p>Xem đợt đăng ký hiện tại, lớp mở, phiếu đăng ký và đợt hoãn thi — chỉ đọc, không bao giờ tự đăng ký.</p>
+      <p>Xem đợt đăng ký hiện tại, lớp mở, phiếu đăng ký và đợt hoãn thi. Công cụ chỉ đọc, không bao giờ tự đăng ký.</p>
       <h3>REPL tương tác</h3>
-      <p>Một lần đăng nhập CAS, sau đó dùng menu 1–8 để xem mọi thứ, kèm lệnh <code>find</code> tìm môn trong CTĐT.</p>
+      <p>Một lần đăng nhập CAS, sau đó dùng menu từ 1 đến 8 để xem mọi thứ, kèm lệnh <code>find</code> tìm môn trong CTĐT.</p>
       <h3>JSON output</h3>
       <p>Thêm <code>--json</code> vào bất kỳ lệnh nào để lấy dữ liệu thô cho script: <code>mybk-planner plan --json</code>.</p>
     </div>
@@ -203,16 +203,16 @@ $ mybk-planner plan      # kế hoạch gợi ý học kỳ tới + dự tính h
     <p>Không. mybk-planner là công cụ mã nguồn mở cộng đồng, không chính thức, được phát triển độc lập. Trường không bảo trì hay xác nhận công cụ này.</p>
 
     <h3>Tài khoản của tôi có an toàn không?</h3>
-    <p>Có, với điều kiện bạn dùng cho chính mình. Công cụ chỉ đọc dữ liệu bằng thông tin đăng nhập của bạn, không sửa đổi gì. Lưu ý giới hạn tốc độ (rate limit) của myBK — nếu bị 403, hãy chờ một lúc, đừng spam.</p>
+    <p>Có, với điều kiện bạn dùng cho chính mình. Công cụ chỉ đọc dữ liệu bằng thông tin đăng nhập của bạn, không sửa đổi gì. Lưu ý giới hạn tốc độ (rate limit) của myBK: nếu bị 403, hãy chờ một lúc, đừng spam.</p>
 
     <h3>Tôi vẫn đăng ký môn học trên myBK chứ?</h3>
     <p>Đúng. mybk-planner chỉ tìm lớp mở và gợi ý kế hoạch học tập. Việc đăng ký luôn thực hiện qua cổng myBK chính thức của trường.</p>
 
     <h3>Vì sao tổng tín chỉ khác với cộng dồn thô trong CTĐT?</h3>
-    <p>Vì khoảng trống của một khối là tổng các dòng yêu cầu phân biệt, và feed lặp lại yêu cầu trên mọi dòng môn học. Cộng dồn thô toàn bộ môn tự chọn sẽ bị đếm thừa — mybk-planner xử lý đúng điều này.</p>
+    <p>Vì khoảng trống của một khối là tổng các dòng yêu cầu phân biệt, và feed lặp lại yêu cầu trên mọi dòng môn học. Cộng dồn thô toàn bộ môn tự chọn sẽ bị đếm thừa. mybk-planner xử lý đúng điều này.</p>
 
     <h3>mybk-planner chạy được trên hệ điều hành nào?</h3>
-    <p>Chạy được trên Windows, macOS và Linux — yêu cầu duy nhất là Python 3.10 trở lên.</p>
+    <p>Chạy được trên Windows, macOS và Linux: yêu cầu duy nhất là Python 3.10 trở lên.</p>
 
     <h3>Làm sao để đóng góp cho dự án?</h3>
     <p>Clone repo, cài <code>pip install -e ".[dev]"</code>, chạy <code>python -m pytest tests -q</code> và <code>ruff check mybk_planner tests</code> rồi mở Pull Request trên GitHub.</p>
