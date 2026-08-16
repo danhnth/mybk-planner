@@ -11,6 +11,8 @@
 
 Read-only by design. It **finds** the classes and **recommends** a plan; registration stays in the official portal.
 
+> **Terminology**: Vietnamese words like `khối`, `đợt`, `hoãn thi`, `TC/HK`, and `CTĐT` are kept untranslated because they are the exact terms used by the myBK portal and official HCMUT documents — keeping them lets you cross-check the tool's output directly against the portal.
+
 [Tiếng Việt → README.vi.md](README.vi.md)
 
 ## Table of Contents
